@@ -54,7 +54,7 @@ class AwgChannel:
 
     @v_off.setter
     def v_off(self,val):
-        self.__awg.write(":SOUR%i:VOLT:OFFS %i" % (self.ch_idx, int(val)))
+        self.__awg.write(":SOUR%i:VOLT:OFFS %f" % (self.ch_idx, val))
 
     # Maximum Voltage(V_DC)
     @property
@@ -64,7 +64,7 @@ class AwgChannel:
 
     @v_high.setter
     def v_high(self,val):
-        self.__awg.write(":SOUR%i:VOLT:HIGH %i" % (self.ch_idx, int(val)))
+        self.__awg.write(":SOUR%i:VOLT:HIGH %f" % (self.ch_idx, val))
 
     # Minimum Voltage(V_DC)
     @property
@@ -74,7 +74,7 @@ class AwgChannel:
 
     @v_low.setter
     def v_low(self,val):
-        self.__awg.write(":SOUR%i:VOLT:LOW %i" % (self.ch_idx, int(val)))
+        self.__awg.write(":SOUR%i:VOLT:LOW %f" % (self.ch_idx, val))
 
 
     # Voltage Amplitude (V_pp)
@@ -85,7 +85,7 @@ class AwgChannel:
 
     @amplitude.setter
     def amplitude(self,val):
-        self.__awg.write(":SOUR%i:VOLT %i" % (self.ch_idx, int(val)))
+        self.__awg.write(":SOUR%i:VOLT %f" % (self.ch_idx, val))
 
 
     def transfer_wave(self,wave):
@@ -116,7 +116,5 @@ class RigolDG(Interface):
 
         for ii in range(self.NUM_CHAN):
             self.ch.append(AwgChannel(self, ii))
-
-        # Configure Binary Write
 
 

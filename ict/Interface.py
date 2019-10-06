@@ -17,11 +17,14 @@ class Interface:
         return self.inst.query(cmd)
 
     def write(self,cmd):
+        print(cmd)
         self.inst.write(cmd)
 
     def write_binary_values(self,*args,**kwargs):
-        self.inst.write_binary_values(*args)
-
+        self.inst.write_binary_values(*args,**kwargs)
+    
+    def query_binary_values(self,*args,**kwargs):
+        return self.inst.query_binary_values(*args,**kwargs)
 
     def parse_sci(self,in_str):
         expr = "[+-]?\d+\.\d+([eE][+-]?\d+)?"
