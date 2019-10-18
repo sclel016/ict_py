@@ -1,45 +1,47 @@
+
 from ict import RigolDG
 from ict import SiglentSDS
-
+from ict import Waveform
+import matplotlib.pyplot as plt
+from bokeh.plotting import figure, output_file, show
 import numpy as np
 import time
 
 
-if __name__ == '__main__':
-    awg = RigolDG('192.168.1.14')
-    scope = SiglentSDS('192.168.1.16')
+# if __name__ == '__main__':
 
+#%%
+awg = RigolDG('192.168.1.14')
+#
+# awg.ch[0].set_sine(freq = 1e3,vpp=4)
+# awg.ch[0].set_square(freq = 1e4,vpp=4)
 
-    # test = np.sin(np.arange(0,10))
-    # awg.ch[0].transfer_wave(test)
-    #awg.ch[0].transfer_wave(np.arange(0,4,0.1))
+# #
+# A = 1
+# N = 20e3
+# Fs = 20e6
 
+# f = 993
+# awg.ch[0].sample_rate = Fs
+# # # # test = np.sin(np.arange(0,10))
+# # # # awg.ch[0].transfer_wave(test)
+# awg.ch[0].transfer_wave(A*np.sin(2*np.pi * np.arange(0, N) * Fs / f),Fs)
+# # awg.ch[0].transfer_wave(np.array([1,2,3,2,1,-1,-4]),Fs)
 
-    # print(scope.ch[0].v_off)
-    # scope.ch[0].v_off =  0.3
-    # print(scope.ch[0].v_off)
-    # scope.ch[0].v_off = 0
+#%%
+scope = SiglentSDS('192.168.1.16')
+scope.get_phase_delay()
+# scope.time_div
 
-    # print(scope.ch[0].skew)
-    # scope.ch[0].skew = 13E-9
-    # print(scope.ch[0].skew)
-    # scope.ch[0].skew = 0
+# scope.time_div = 100e-6
 
-
-    # print(scope.ch[0].enabled)
-    # scope.ch[0].enabled = 0
-    # print(scope.ch[0].enabled)
-    # scope.ch[0].enabled = 1
-
-    # print(scope.ch[0].v_div)
-    # scope.ch[0].v_div = 1.3
-    # print(scope.ch[0].v_div)
-    # scope.ch[0].v_div = 1
-
-    # print(scope.ch[0].wfsu)
-
-    lol = scope.ch[0].get_waveform()
-    print(type(lol))
+# scope.measure_phase()
+print(scope.ch[0].all)
+#
+# wave = scope.ch[0].get_waveform()
+#
+# plt.plot(wave.x_values, wave.y_values)
 
 
 
+#%%

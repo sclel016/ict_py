@@ -1,6 +1,7 @@
 import pyvisa
 import re
 
+
 class Interface:
 
     inst = ''
@@ -20,16 +21,30 @@ class Interface:
         print(cmd)
         self.inst.write(cmd)
 
+    def read(self,*args,**kwargs):
+        return self.inst.query_ascii_values(*args,**kwargs)
+
     def write_binary_values(self,*args,**kwargs):
         self.inst.write_binary_values(*args,**kwargs)
-    
+
+    def read(self,*args,**kwargs):
+        return self.inst.read(*args,**kwargs)
+
     def query_binary_values(self,*args,**kwargs):
         return self.inst.query_binary_values(*args,**kwargs)
 
-    def parse_sci(self,in_str):
-        expr = "[+-]?\d+\.\d+([eE][+-]?\d+)?"
+    def query_ascii_values(self,*args,**kwargs):
+        return self.inst.query_ascii_values(*args,**kwargs)
 
-        return float(re.search(expr,in_str).group())
+    def read_raw(self,*args,**kwargs):
+        return self.inst.read_raw(*args,**kwargs)
+
+    def read_bytes(self,*args,**kwargs):
+        return self.inst.read_bytes(*args,**kwargs)
+
+    def parse_sci(self,in_str):
+        expr = r"[+-]?\d+\.\d+([eE][+-]?\d+)?"
+        return float(re.search(expr, in_str).group())
 
 
 
