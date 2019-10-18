@@ -4,7 +4,9 @@ import re
 
 
 class AwgChannel:
-
+    """
+        Class designed to interface with individual channels on the Rigol DG1062Z AWG
+    """
     def __init__(self, awg, ch_idx):
         self.__awg = awg
         self.ch_idx = ch_idx + 1
@@ -180,6 +182,9 @@ class AwgChannel:
 
 
 class RigolDG(Interface):
+    """
+        Class designed to interface with individual channels on the Rigol DG1062Z AWG
+    """
     NUM_CHAN = 2
 
     ch = []

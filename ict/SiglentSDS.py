@@ -1,10 +1,12 @@
 from ict.Interface import Interface
 from ict.utilities import Waveform
 import numpy as np
-import json
 import re
 
 class ScopeChannel:
+    """
+        Class designed to interface with individual channels on the Siglent SDS 1202X-E Oscilloscope
+    """
 
     def __init__(self,scope,ch_idx):
         self._scope = scope
@@ -107,6 +109,9 @@ class ScopeChannel:
 
 
 class SiglentSDS(Interface):
+    """
+        Class designed to interface with the Siglent SDS 1202X-E Oscilloscope
+    """
 
     NUM_CHAN = 2
     ch = []

@@ -3,9 +3,7 @@ from ict import RigolDG
 from ict import SiglentSDS
 from ict import Waveform
 import matplotlib.pyplot as plt
-from bokeh.plotting import figure, output_file, show
 import numpy as np
-import time
 
 
 # if __name__ == '__main__':
